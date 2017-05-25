@@ -1,0 +1,69 @@
+{
+  "name": "A",
+  "parent": "null",
+  "value": 10,
+  "type": "black",
+  "level": "red",
+  "children": [
+    {
+      "name": "B",
+      "parent": "A",
+      "value": 15,
+      "type": "grey",
+      "level": "red",
+      "children": [
+        {
+          "name": "E",
+          "parent": "B",
+          "value": 5,
+          "type": "steelblue",
+          "level": "orange",
+          "children": [
+            {"name": "J","parent": "E","value": 16,"type": "steelblue","level": "DarkSlateGray"},
+            {"name": "G","parent": "E","value": 18,"type": "DarkRed","level": "ForestGreen"},
+            {"name": "H","parent": "E","value": 10,"type": "RoyalBlue","level": "DarkCyan"},
+            {"name": "K","parent": "E","value": 12,"type": "Wheat","level": "Purple"}
+          ]
+        },
+        {
+          "name": "F",
+          "parent": "B",
+          "value": 8,
+          "type": "steelblue",
+          "level": "red",
+          "children": [
+            {"name": "L","parent": "F","value": 14,"type": "MediumSpringGreen","level": "Aqua","children":[
+              {"name": "W","parent": "L","value": 8,"type": "MediumOrchid","level": "Tomato"},
+              {"name": "Z","parent": "L","value": 10,"type": "CadetBlue","level": "Purple"},
+              {"name": "Y","parent": "L","value": 18,"type": "Gainsboro","level": "PowderBlue"}
+            ]},
+            {"name": "M","parent": "F","value": 4,"type": "HotPink","level": "DarkSlateGray"}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "C",
+      "parent": "A",
+      "value": 10,
+      "type": "grey",
+      "level": "green",
+      "children":[
+        {"name": "N","parent": "C","value": 6,"type": "Brown","level": "MediumTurquoise"},
+        {"name": "P","parent": "C","value": 15,"type": "Salmon","level": "BurlyWood"},
+        {
+          "name": "R",
+          "parent": "C",
+          "value": 7,
+          "type": "FireBrick",
+          "level": "Moccasin",
+          "children": [
+            {"name": "T","parent": "R","value": 8,"type": "steelblue","level": "Magenta"},
+            {"name": "X","parent": "R","value": 10,"type": "DimGray","level": "Tomato"},
+            {"name": "U","parent": "R","value": 3,"type": "steelblue","level": "DarkOrange"},
+            {"name": "S","parent": "R","value": 18,"type": "MistyRose","level": "Khaki"}
+          ]}
+      ]
+    }
+  ]
+}
