@@ -1,11 +1,11 @@
 # Tree Folder D3
 
-##Yêu cầu 
+## Yêu cầu 
 Thể hiện cây thư mục với thành phần là các nút cha - con tượng trưng với D3js. 
 Dữ liệu đầu vào là file json chứa thông tin các cấp thư mục
 
-##Thực hiện 
-###Bước 1: Vẽ cây thư mục dạng tĩnh bằng tree layout d3js
+## Thực hiện 
+### Bước 1: Vẽ cây thư mục dạng tĩnh bằng tree layout d3js
 Dữ liệu: 
 
 ```
@@ -103,11 +103,10 @@ var link = svg.selectAll("path.link")
             .attr("class", "link")
             .attr("d", diagonal);
 ```
-Kết quả 
-
+### Kết quả 
 ![basic tree](./pic/1.png)
 
-###Bước 2: Chuyển dữ liệu sang file json và Cây thư mục sang dạng động 
+### Bước 2: Chuyển dữ liệu sang file json và Cây thư mục sang dạng động 
 
 Hàm đọc file json: 
 ``` 
@@ -194,10 +193,10 @@ Thêm các hàm update vị trí mới cho cây thư mục (gồm nốt, đườ
             })
             .remove();
 ```
-Kết quả:
+### Kết quả:
 ![updated tree](./pic/2.png)
 
-Bước 3: Hoàn thiện 
+### Bước 3: Hoàn thiện 
 
 Thêm các thuộc tính màu sắc, độ lớn cho nút ở dữ liệu json:
 ``` 
@@ -250,5 +249,5 @@ Thêm code để dọc dữ liệu mới
         .style("stroke", function(d) { return d.target.level; })....
 ```
 
-##Kết quả
+## Kết quả
 ![completed tree](./pic/3.png)
