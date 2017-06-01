@@ -71,7 +71,7 @@ function update(source) {
 ```
 
 - Độ cao chung của cây thư mục (bao gồm các cây thư mục con): 
-```  
+```javascript  
 nodes.forEach(function(d) { d.y = d.depth * 100; });
 ```
 
@@ -95,7 +95,7 @@ nodes.forEach(function(d) { d.y = d.depth * 100; });
 
 - Thêm đường kẻ nối các thư mục với nhau: 
 
-``` 
+```javascript 
 var link = svg.selectAll("path.link")
             .data(links, function(d) { return d.target.id; });
         // Enter the links.
