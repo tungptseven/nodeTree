@@ -1,0 +1,27 @@
+{
+  "name": "foldertree",
+  "version": "1.0.0",
+  "description": "visualize folder tree structure by D3js",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tungptseven/nodeTree.git"
+  },
+  "keywords": [
+    "tree",
+    "folder",
+    "d3js"
+  ],
+  "author": "Phan Tien Tung",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tungptseven/nodeTree/issues"
+  },
+  "homepage": "https://github.com/tungptseven/nodeTree#readme",
+  "dependencies": {
+    "dir-to-json": "0.0.3"
+  }
+}
