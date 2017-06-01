@@ -8,7 +8,7 @@ Dữ liệu đầu vào là file json chứa thông tin các cấp thư mục
 ### Bước 1: Vẽ cây thư mục dạng tĩnh bằng tree layout d3js
 Dữ liệu: 
 
-```
+```javascript
 var treeData = [
         {
             "name": "Top Level",
@@ -39,7 +39,7 @@ var treeData = [
 ```
 Khởi tạo các biến ban đầu 
 
-``` 
+```javascript 
 var margin = {top: 40, right: 120, bottom: 20, left: 120},
         width = 960 - margin.right - margin.left,
         height = 500 - margin.top - margin.bottom;
@@ -61,7 +61,7 @@ var margin = {top: 40, right: 120, bottom: 20, left: 120},
 Hàm Vẽ cây thư mục:
 
 - Tạo biến thể hiện nút và đường kẻ
-``` 
+```javascript 
 function update(source) {
         // Compute the new tree layout.
         var nodes = tree.nodes(root).reverse(),
@@ -76,7 +76,7 @@ nodes.forEach(function(d) { d.y = d.depth * 100; });
 ```
 
 - Thêm các hình tròn đại diện thư mục và chữ thể hiện tên: 
-``` 
+```javascript 
  var nodeEnter = node.enter().append("g")
             .attr("class", "node")
             .attr("transform", function(d) {
@@ -109,7 +109,7 @@ var link = svg.selectAll("path.link")
 ### Bước 2: Chuyển dữ liệu sang file json và Cây thư mục sang dạng động 
 
 Hàm đọc file json: 
-``` 
+```javascript 
 d3.json("color.json", function (error, flare) {
         if (error) throw error;
 
@@ -127,7 +127,7 @@ d3.json("color.json", function (error, flare) {
 
 ```
 Thêm sự kiện cho mỗi nút 
-``` 
+```javascript 
  var nodeEnter = node.enter().append("g")
             .attr("class", "node")
             .attr("transform", function (d) {
@@ -136,12 +136,9 @@ Thêm sự kiện cho mỗi nút
             .on("click", click);
 ``` 
 
-``` 
-
-```
 Thêm các hàm update vị trí mới cho cây thư mục (gồm nốt, đường nối, chữ...)
 
-``` 
+```javascript 
         var nodeUpdate = node.transition()
             .duration(duration)
             .attr("transform", function (d) {
@@ -170,7 +167,7 @@ Thêm các hàm update vị trí mới cho cây thư mục (gồm nốt, đườ
             .style("fill-opacity", 10);
 
 ```
-``` 
+```javascript 
         link.enter().insert("path", "g")
             .attr("class", "link")
             .style("stroke", "lightsteelblue")
@@ -199,7 +196,7 @@ Thêm các hàm update vị trí mới cho cây thư mục (gồm nốt, đườ
 ### Bước 3: Hoàn thiện 
 
 Thêm các thuộc tính màu sắc, độ lớn cho nút ở dữ liệu json:
-``` 
+```javascript 
 {
   "name": "A",
   "parent": "null",
@@ -228,7 +225,7 @@ Thêm các thuộc tính màu sắc, độ lớn cho nút ở dữ liệu json:
           ]....
 ```
 Thêm code để dọc dữ liệu mới 
-``` 
+```javascript 
     link.enter().insert("path", "g")
         .style("stroke", function(d) { return d.target.level; })...
         
@@ -249,5 +246,42 @@ Thêm code để dọc dữ liệu mới
         .style("stroke", function(d) { return d.target.level; })....
 ```
 
-## Kết quả
+### Kết quả
 ![completed tree](./pic/3.png)
+
+### Bước 4
+- Sử dụng module dir-to-json quét cấu trúc thư mục, module fs để ghi kết quả ra file json 
+```javascript 
+var dirToJson = require('dir-to-json');
+var fs = require('fs');
+
+dirToJson( "/home/msi/Downloads/project_2", function( err, dirTree ){
+    if( err ){
+        throw err;
+    }else{
+        var json = JSON.stringify(dirTree) ;
+        fs.writeFile('data.json',json)
+    }
+});
+```
+
+- Gọi file json vào html
+```javascript
+d3.json("./data.json", function (error, flare) {.....}            
+```
+
+### Kết quả 
+![tree folder](./pic/4.png)
+
+## Sử dụng 
+- Cây dạng tĩnh: basicTree.html
+- Cây dạng động: InteractiveTree.html + color.json 
+- Cây thư mục:
+    - Quét cấu trúc thư mục: ScanFolder.js
+    ```
+     cd TidyTree   
+     npm install
+     node ScanFolder.js 
+    ```
+    - index.html + data.json 
+- Cây tự tạo cấu trúc: randomTree.html     
